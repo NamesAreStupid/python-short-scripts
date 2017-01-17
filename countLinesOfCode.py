@@ -7,7 +7,7 @@ def countLines(file):
             f = open(file)
             return sum(1 for _ in f)
         except Exception as e:
-            print("Error opening file: " + str(file))
+            print("Could not open file: " + str(file))
             # print(e)
             return 0
         else:
