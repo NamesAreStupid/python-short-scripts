@@ -20,7 +20,14 @@ def countLinesShort(files):
             yield sum(1 for _ in f)
 
 
+
 def listFiles(root):
+    for dirpath, dirnames, filenames in os.walk(root):
+        for file in filenames:
+            yield os.path.join(dirpath, file)
+
+
+def listFilesStrange(root):
     for dirpath, dirnames, filenames in os.walk(root):
         for name in [os.path.join(dirpath, file) for file in filenames]:
             yield name
@@ -28,6 +35,6 @@ def listFiles(root):
 
 root = './'
 fileList = list(listFiles(root))
-lines = list(countLines(fileList))
-print(sum(lines))
+linecounts = list(countLines(fileList))
+print(sum(linecounts))
 input("Press any key to continue...")
