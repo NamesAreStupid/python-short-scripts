@@ -13,12 +13,12 @@ def countLines(files):
         else:
             f.close
 
+
 """No error handling!"""
 def countLinesShort(files):
     for file in files:
         with open(file) as f:
             yield sum(1 for _ in f)
-
 
 
 def listFiles(root):
