@@ -13,9 +13,11 @@ def countLines(file):
         else:
             f.close
 
-"""Using a generator expression is less memory intensive than a list comprehension, 
-because it yield one item, instead of building a list containing all items."""
+
 def listFiles(root):
+    """Using a generator expression is less memory intensive than a list comprehension,
+    because it yield one item, instead of building a list containing all items.
+    """
     for dirpath, dirnames, filenames in os.walk(root):
         for file in filenames:
             yield os.path.join(dirpath, file)
