@@ -26,6 +26,7 @@ def listFiles(root):
 root = './'
 """fileList = [os.path.join(dirpath, file)
             for dirpath, dirnames, filenames in os.walk(root)
-            for file in filenames]"""
+            for file in filenames]
+"""
 print(sum(countLines(file) for file in listFiles(root)))
 input("Press any key to continue...")
