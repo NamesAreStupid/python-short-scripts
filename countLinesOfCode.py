@@ -13,10 +13,17 @@ def countLines(file):
         else:
             f.close
 
+"""Using a generator expression is less memory intensive than a list comprehension, 
+because it yield one item, instead of building a list containing all items."""
+def listFiles(root):
+    for dirpath, dirnames, filenames in os.walk(root):
+        for file in filenames:
+            yield os.path.join(dirpath, file)
+
 
 root = './'
-fileList = [os.path.join(dirpath, file)
+"""fileList = [os.path.join(dirpath, file)
             for dirpath, dirnames, filenames in os.walk(root)
-            for file in filenames]
-print(sum(countLines(file) for file in fileList))
+            for file in filenames]"""
+print(sum(countLines(file) for file in listFiles(root)))
 input("Press any key to continue...")
