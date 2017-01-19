@@ -16,7 +16,7 @@ def countLines(file):
 
 def listFiles(root):
     """Using a generator expression is less memory intensive than a list comprehension,
-    because it yields one item, instead of building a list containing all items.
+    because it yields one item at a time, instead of building a list containing all items.
     """
     for dirpath, dirnames, filenames in os.walk(root):
         for file in filenames:
