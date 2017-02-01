@@ -23,10 +23,11 @@ def listFiles(root):
             yield os.path.join(dirpath, file)
 
 
-root = './'
+root = 'D:\\'
 """fileList = [os.path.join(dirpath, file)
             for dirpath, dirnames, filenames in os.walk(root)
             for file in filenames]
 """
 print(sum(countLines(file) for file in listFiles(root)))
+print(list(listFiles(root)))
 input("Press any key to continue...")
