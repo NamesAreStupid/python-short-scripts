@@ -58,7 +58,4 @@ class Perceptron(object):
     def predict(self, X):
         """Return class label after unit step"""
         return np.where(self.net_input(X) >= 0.0, 1, -1)
-
-
-df = pd.read_csv('https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data', header=None)
-df.tail()
+        
