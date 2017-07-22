@@ -6,34 +6,47 @@ def pipeline(numbers, *args):
     return x
 
 
-def addOne(list):
-    for i in list:
+def makeChain(*args):
+    def chain(values):
+        x = args[0](values)
+        for g in args[1:]:
+            x = g(x)
+        return x
+    return chain
+
+
+def addOne(values):
+    for i in values:
         print('add 1 to ', i)
         yield i + 1
 
 
-def square(list):
-    for i in list:
+def square(values):
+    for i in values:
         print('square ', i)
         yield i ** 2
 
 
-def substractOne(list):
-    for i in list:
+def substractOne(values):
+    for i in values:
         print('substract 1 ', i)
         yield i - 1
 
 
-def printer(list):
-    for i in list:
+def printer(values):
+    for i in values:
         print('print ', i)
+
 
 numbers = [1, 2, 3, 4, 5]
 # pipeline(numbers, addOne, square, substractOne, printer)
 
 mixins = [addOne, square, substractOne, printer]
-pipeline(numbers, *mixins)
+# pipeline(numbers, *mixins)
 
 mixins2 = [addOne, square, substractOne]
-piped = list(pipeline(numbers, *mixins2))
-print(piped)
+# piped = list(pipeline(numbers, *mixins2))
+# print(piped)
+
+x = makeChain(*mixins)
+x(numbers)
